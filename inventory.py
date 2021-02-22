@@ -21,6 +21,6 @@ class Inventory:
     def save(self):
         with open(self.filename, 'wb') as fp:
             pickle.dump(self.products, fp)
-
+#guardar
     def addProduct(self, product):
         self.products.append(product)
