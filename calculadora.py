@@ -1,22 +1,36 @@
 class Calculadora():
-    def __init__(self):
-        """Inicializa la calculadora"""
-        self.valor = 0
-    def suma (self, n):
-        """suma un numero n al valor"""
-        self.valor += n 
-    def resta (self, n):
-        """resta un numero n al valor"""
-        self.valor -= n
-    def mult (self, n):
-        """multiplica un numero n al valor"""
-        self.valor = self.valor * n
-    def getValor(self):
-        """Obtiene el valor"""
-        return self.valor
 
+    def add (self, first_number, second_number):
+        return first_number + second_number 
+    def rest (self, first_number, second_number):
+        return first_number - second_number 
+    def mult (self, first_number, second_number):
+        return first_number * second_number 
+    def is_valid_operator (self, operator):
+        return operator == '+' or operator =='-' or operator =='*'
+         
+first_number = int(input("Insert the first value: "))
+second_number = int(input("Insert the second value: "))
+operator = input("Choose the operator: ")
 calc = Calculadora()
-calc.suma(2)
-print(calc.getValor())
-calc.mult(2)
-print(calc.getValor())
+
+while not calc.is_valid_operator(operator):
+
+    operator = input("Choose a valid operator (+,-,*): ")
+
+
+if operator == '+':
+    resultado = calc.add(first_number, second_number)
+elif operator =='-':
+    resultado = calc.rest(first_number, second_number)
+elif operator =='*':
+    resultado = calc.mult(first_number, second_number)
+
+print(resultado)
+
+
+
+
+
+
+
