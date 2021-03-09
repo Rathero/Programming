@@ -27,10 +27,3 @@ elif operator =='*':
     resultado = calc.mult(first_number, second_number)
 
 print(resultado)
-
-
-
-
-
-
-
