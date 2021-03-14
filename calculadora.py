@@ -10,24 +10,30 @@ class Calculator():
         return first_number / second_number 
     def is_valid_operator (self, operator):
         return operator == '+' or operator =='-' or operator =='*' or operator == '/'
-    def valid_first_number (self, first_number):
-        return isinstance(first_number, int) 
-    def valid_second_number (self, second_number):
-        return isinstance(second_number, int)
+
+def num(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
 
 calc = Calculator()         
 
 first_number = input("Insert the first value: ")
 
-while not calc.valid_first_number(first_number):
+while not num(first_number):
 
-    first_number = int(input('WRONG VALUE! n\ Please, choose an enter value: '))
+    first_number = input('WRONG VALUE! \n Please, choose an enter value: ')
 
-second_number = int(input("Insert the second value: "))
+first_number = int(first_number)
 
-while not calc.valid_second_number(second_number):
+second_number = input("Insert the second value: ")
 
-   second_number = input('WRONG!! n\ Please select an enter value')
+while not num(second_number):
+
+   second_number = input('WRONG!! \n Please select an enter value: ')
+second_number = int(second_number)
 
 operator = input("Choose the operator: ")
 
@@ -46,3 +52,4 @@ elif operator =='/':
     resultado = calc.div(first_number, second_number)
 
 print(resultado)
+
