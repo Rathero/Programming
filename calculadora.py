@@ -18,23 +18,22 @@ def num(s):
     except ValueError:
         return False
 
+def get_valid_value ():
+
+    number = input("Insert the value: ")
+
+    while not num(number):
+
+        number = input('WRONG VALUE! \n Please, choose an enter value: ')
+
+    number = int(number)
+
+    return number
+
 calc = Calculator()         
 
-first_number = input("Insert the first value: ")
-
-while not num(first_number):
-
-    first_number = input('WRONG VALUE! \n Please, choose an enter value: ')
-
-first_number = int(first_number)
-
-second_number = input("Insert the second value: ")
-
-while not num(second_number):
-
-   second_number = input('WRONG!! \n Please select an enter value: ')
-second_number = int(second_number)
-
+first_number = get_valid_value()
+second_number = get_valid_value()
 operator = input("Choose the operator: ")
 
 while not calc.is_valid_operator(operator):
