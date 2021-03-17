@@ -1,3 +1,8 @@
+import numpy as np
+import pandas as pd
+
+
+
 class Calculator():
 
     def add (self, first_number, second_number):
@@ -32,23 +37,34 @@ def get_valid_value ():
 
 calc = Calculator()         
 
-first_number = get_valid_value()
+'''first_number = Datos.iloc[]
 second_number = get_valid_value()
-operator = input("Choose the operator: ")
-
-while not calc.is_valid_operator(operator):
-
-    operator = input("Choose a valid operator (+,-,*,/): ")
+operator = input("Choose the operator: ")'''
 
 
-if operator == '+':
-    resultado = calc.add(first_number, second_number)
-elif operator =='-':
-    resultado = calc.rest(first_number, second_number)
-elif operator =='*':
-    resultado = calc.mult(first_number, second_number)
-elif operator =='/':
-    resultado = calc.div(first_number, second_number)
 
-print(resultado)
+Datos = pd.read_csv('DatosCalculadora.csv', delimiter='\t')
+print(Datos)
 
+for index, row in Datos.iterrows():
+    first_number = row['num1']
+    second_number = row['num2']
+    operator = row['operador']
+    resultado = 0
+
+    if operator == '+':
+        resultado = calc.add(first_number, second_number)
+    elif operator =='-':
+        resultado = calc.rest(first_number, second_number)
+    elif operator =='*':
+        resultado = calc.mult(first_number, second_number)
+    elif operator =='/':
+        resultado = calc.div(first_number, second_number)
+        
+    Datos.at[index, 'resultado'] = resultado
+
+print(Datos)
+
+Datos.to_csv('Datos_calculadora_resultado.csv')
+
+        
